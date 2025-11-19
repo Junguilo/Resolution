@@ -5,7 +5,6 @@
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
 3. [Wireframes](#Wireframes)
-4. [Schema](#Schema)
 
 ## Overview
 So many people try to make long term goals with failing results, the reason being is that they lack a plan for it or a lack of motivation due to unnoticeable progress. This app will help you plan out your goals and motivate you in order to achieve them. 
