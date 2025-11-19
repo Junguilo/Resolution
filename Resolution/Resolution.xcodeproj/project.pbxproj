@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD1253842ECDA1DE0031D746 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = BD1253832ECDA1DE0031D746 /* Supabase */; };
+		BD1253912ECE65210031D746 /* Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = BD1253902ECE65210031D746 /* Markdown */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD1253842ECDA1DE0031D746 /* Supabase in Frameworks */,
+				BD1253912ECE65210031D746 /* Markdown in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,7 @@
 			name = Resolution;
 			packageProductDependencies = (
 				BD1253832ECDA1DE0031D746 /* Supabase */,
+				BD1253902ECE65210031D746 /* Markdown */,
 			);
 			productName = Resolution;
 			productReference = BD1253632ECD86160031D746 /* Resolution.app */;
@@ -123,6 +126,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				BD1253812ECD9F7B0031D746 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+				BD12538F2ECE65210031D746 /* XCRemoteSwiftPackageReference "swift-markdown" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BD1253642ECD86160031D746 /* Products */;
@@ -362,6 +366,14 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		BD12538F2ECE65210031D746 /* XCRemoteSwiftPackageReference "swift-markdown" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftlang/swift-markdown";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.7.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -369,6 +381,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BD1253812ECD9F7B0031D746 /* XCRemoteSwiftPackageReference "supabase-swift" */;
 			productName = Supabase;
+		};
+		BD1253902ECE65210031D746 /* Markdown */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD12538F2ECE65210031D746 /* XCRemoteSwiftPackageReference "swift-markdown" */;
+			productName = Markdown;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
