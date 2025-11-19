@@ -6,10 +6,22 @@
 //
 
 import UIKit
- 
+
+// MARK: - Quote Model
+struct Quote: Codable {
+    let text: String
+    let author: String
+    
+    enum CodingKeys: String, CodingKey {
+        case text = "q"
+        case author = "a"
+    }
+}
+
 class GoalListViewController: UIViewController{
 
     
+    @IBOutlet weak var motivationalQuotes: UILabel!
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var emptyStateLabel: UIButton!
     
@@ -21,12 +33,17 @@ class GoalListViewController: UIViewController{
         tableView.tableHeaderView = UIView()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // Fetch a motivational quote when the view loads
+        fetchRandomQuote()
     }
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         
         refreshGoals()
+        // Fetch a new quote each time the view appears
+        fetchRandomQuote()
     }
     
     
@@ -71,6 +88,36 @@ class GoalListViewController: UIViewController{
         self.goals = goals
         //emptyStateLabel.isHidden = !goals.isEmpty
         tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
+    }
+    
+    // MARK: - Quote Fetching
+    private func fetchRandomQuote() {
+        guard let url = URL(string: "https://zenquotes.io/api/random") else { return }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, error == nil else {
+                print("Error fetching quote: \(error?.localizedDescription ?? "Unknown error")")
+                DispatchQueue.main.async {
+                    self?.motivationalQuotes.text = "Stay motivated and achieve your goals!"
+                }
+                return
+            }
+            
+            do {
+                let quotes = try JSONDecoder().decode([Quote].self, from: data)
+                if let quote = quotes.first {
+                    DispatchQueue.main.async {
+                        self?.motivationalQuotes.text = "\"\(quote.text)\" - \(quote.author)"
+                        self?.motivationalQuotes.numberOfLines = 0 // Allow multiple lines
+                    }
+                }
+            } catch {
+                print("Error decoding quote: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self?.motivationalQuotes.text = "Stay motivated and achieve your goals!"
+                }
+            }
+        }.resume()
     }
 }
 
