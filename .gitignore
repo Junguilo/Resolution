@@ -1,0 +1,16 @@
+# Environment variables
+Resolution/Resolution/.env
+*.env
+.env.local
+.env.development
+.env.staging
+.env.production
+
+# iOS/Xcode
+*.xcuserdata
+*.xcscheme
+DerivedData/
+build/
+
+# macOS
+.DS_Store
